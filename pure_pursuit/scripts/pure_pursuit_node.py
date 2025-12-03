@@ -44,7 +44,7 @@ class PurePursuit(Node):
 
         self.frame_id = self.declare_parameter('frame_id','map').get_parameter_value().string_value
         self.base_link= self.declare_parameter('base_link','ego_racecar/base_link').get_parameter_value().string_value
-        self.L        = float(self.declare_parameter('lookahead',1.9).get_parameter_value().double_value)
+        self.L        = float(self.declare_parameter('lookahead',1.35).get_parameter_value().double_value)
         self.WB       = float(self.declare_parameter('wheelbase',0.33).get_parameter_value().double_value)
         self.speed    = float(self.declare_parameter('speed',3.0).get_parameter_value().double_value)
         self.cmd_topic= self.declare_parameter('cmd_topic','/drive').get_parameter_value().string_value
@@ -117,9 +117,9 @@ class PurePursuit(Node):
 
         msg = AckermannDriveStamped()
         msg.header.stamp = self.get_clock().now().to_msg()
-        print(delta, speed)
+        # print(speed)
         msg.drive.steering_angle = float(delta)
-        msg.drive.speed = float(speed)
+        msg.drive.speed = float(3.8)
         self.drive_pub.publish(msg)
 
     def select_goal(self, x, y, yaw) -> Tuple[float,float]:

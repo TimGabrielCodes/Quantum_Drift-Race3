@@ -29,8 +29,8 @@ class InteractiveMarkersDemoNode(Node):
         self.declare_parameter("control_csv", "control_markers.csv")
         self.declare_parameter("point_csv", "point_markers.csv")
         self.declare_parameter("inter_points", 200)
-        self.declare_parameter("speed_min", 1.2)
-        self.declare_parameter("speed_max", 5.5)
+        self.declare_parameter("speed_min", 2.5)
+        self.declare_parameter("speed_max", 4.0)
 
         self._server = InteractiveMarkerServer(self, "server_name")
         self._marker_num = 0
